@@ -1,0 +1,7 @@
+version: '1.0'
+steps:
+  build:
+    type: build
+    image_name: codefresh-sandbox
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile
