@@ -5,3 +5,12 @@ steps:
     image_name: codefresh-sandbox
     working_directory: ${{main_clone}}
     dockerfile: Dockerfile
+  push:
+    type: push
+    candidate: ${{build}}
+    tag: ${{CF_BRANCH}}
+    provider: ecr
+    registry: ${{ECS_REGISTRY}}
+    accessKeyId: ${{AWS_ACCESS_KEY_ID}}
+    secretAccessKey: ${{AWS_SECRET_ACCESS_KEY}}
+    region: ${{AWS_REGION}}
