@@ -14,3 +14,11 @@ steps:
     accessKeyId: ${{AWS_ACCESS_KEY_ID}}
     secretAccessKey: ${{AWS_SECRET_ACCESS_KEY}}
     region: ${{AWS_REGION}}
+  deploy:
+    image: codefresh/cf-deploy-ecs
+    commands:
+      - cfecs-update "${AWS_REGION}" "${ECS_CLUSTER}" "${ECS_SERVICE}"
+    when:
+      branch:
+        only:
+          - master
